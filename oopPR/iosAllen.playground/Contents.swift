@@ -154,11 +154,61 @@ import Darwin
 //
 //pack(num: 5)
 
-func facktorial(num: Int) -> Int {
-    if num <= 1 {
-        return 1
-    }
-    return num * facktorial(num: num - 1)
+//func facktorial(num: Int) -> Int {
+//    if num <= 1 {
+//        return 1
+//    }
+//    return num * facktorial(num: num - 1)
+//}
+//
+//facktorial(num: 10)
+
+var number: Int? = 7
+var hello: String? = "안녕하세요"
+var name: String? = "홍길동"
+var newNum: Double? = 5.5
+
+print(number)
+print(hello)
+print(name)
+print(newNum)
+
+if let n = number {
+    print(n)
 }
 
-facktorial(num: 10)
+if let hi = hello {
+    print(hi)
+}
+
+if let num = name {
+    print(num)
+}
+
+if let nenm = newNum {
+    print(nenm)
+}
+
+func numberCheck() {
+    guard let n = number else {return}
+    print(n)
+}
+numberCheck()
+
+func helloCheck() {
+    guard let hi = hello else {return}
+    print(hi)
+}
+helloCheck()
+
+func nameCheck() {
+    guard let name = name else {return}
+    print(name)
+}
+nameCheck()
+
+func newnumCheck() {
+    guard let newNum = newNum else {return}
+    print(newNum)
+}
+newnumCheck()
