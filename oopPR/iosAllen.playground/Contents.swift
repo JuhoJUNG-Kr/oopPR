@@ -235,47 +235,102 @@ import Darwin
 //}
 //checkOverlap(lottoNumbers: makeLottoNumbers())
 
-let myLottoNumbers: Set<Int> = [1, 2, 3, 4, 5, 6]
-var historyLotto = [String: Set<Int>]()
+//let myLottoNumbers: Set<Int> = [1, 2, 3, 4, 5, 6]
+//var historyLotto = [String: Set<Int>]()
+//
+//func makeLottoNumbers() -> Set<Int> {
+//    var lottoNumbers = Set<Int>()
+//
+//    while lottoNumbers.count < 6 {
+//        lottoNumbers.insert(Int.random(in: 1...45))
+//    }
+//
+//    var round = historyLotto.count
+//    round += 1
+//    historyLotto["\(round)회차"] = lottoNumbers
+//
+//    return lottoNumbers
+//}
+//
+//func checkOverlap(lottoNumbers: Set<Int>) {
+//    let overlapNumbers = myLottoNumbers.intersection(lottoNumbers)
+//    if overlapNumbers.isEmpty {
+//        print("아쉽지만 겹치는 번호가 없습니다")
+//    } else {
+//        let printedOverlapNumbers = overlapNumbers.map { String($0) }.joined(separator: ", ")
+//        print("축하합니다! 겹치는 번호는 \(printedOverlapNumbers) 입니다!")
+//    }
+//}
+//
+//func checkResultLotto(round: Int) {
+//    if let lottoData = historyLotto["\(round)회차"] {
+//        let printLottoData = lottoData.map { String($0) }.joined(separator: ", ")
+//        print("\(round)회차의 당첨 번호는 \(printLottoData)입니다")
+//    } else {
+//        print("No Data")
+//    }
+//
+//}
+//
+//makeLottoNumbers()
+//makeLottoNumbers()
+//makeLottoNumbers()
+//makeLottoNumbers()
+//makeLottoNumbers()
+//print(historyLotto)
+//checkResultLotto(round: 2)
 
-func makeLottoNumbers() -> Set<Int> {
-    var lottoNumbers = Set<Int>()
-    
-    while lottoNumbers.count < 6 {
-        lottoNumbers.insert(Int.random(in: 1...45))
-    }
-    
-    var round = historyLotto.count
-    round += 1
-    historyLotto["\(round)회차"] = lottoNumbers
-    
-    return lottoNumbers
+//enum School {
+//    case eleve
+//    case middle
+//    case high
+//    case uni
+//}
+//
+//var yourSchool = School.middle
+//
+//switch yourSchool {
+//case .eleve:
+//    print("초딩")
+//case .middle:
+//    print("중딩")
+//case .high:
+//    print("고딩")
+//case .uni:
+//    print("대딩")
+//}
+
+let a: Int? = 7
+print(a)
+
+switch a {
+case .some(let z):
+    print(z)
+case .none:
+    break
 }
 
-func checkOverlap(lottoNumbers: Set<Int>) {
-    let overlapNumbers = myLottoNumbers.intersection(lottoNumbers)
-    if overlapNumbers.isEmpty {
-        print("아쉽지만 겹치는 번호가 없습니다")
-    } else {
-        let printedOverlapNumbers = overlapNumbers.map { String($0) }.joined(separator: ", ")
-        print("축하합니다! 겹치는 번호는 \(printedOverlapNumbers) 입니다!")
-    }
+switch a {
+case let x?:
+    print(x)
+case .none:
+    break
 }
 
-func checkResultLotto(round: Int) {
-    if let lottoData = historyLotto["\(round)회차"] {
-        let printLottoData = lottoData.map { String($0) }.joined(separator: ", ")
-        print("\(round)회차의 당첨 번호는 \(printLottoData)입니다")
-    } else {
-        print("No Data")
-    }
-    
+if case .some(let z) = a {
+    print(z)
 }
 
-makeLottoNumbers()
-makeLottoNumbers()
-makeLottoNumbers()
-makeLottoNumbers()
-makeLottoNumbers()
-print(historyLotto)
-checkResultLotto(round: 2)
+if case let x? = a {
+    print(x)
+}
+
+let c: [Int?] = [nil, 2, 3, nil, 5]
+
+for case .some(let z) in c {
+    print(z)
+}
+
+for case let x? in c {
+    print(x)
+}
