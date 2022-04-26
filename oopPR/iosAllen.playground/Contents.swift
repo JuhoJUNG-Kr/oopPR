@@ -163,52 +163,119 @@ import Darwin
 //
 //facktorial(num: 10)
 
-var number: Int? = 7
-var hello: String? = "안녕하세요"
-var name: String? = "홍길동"
-var newNum: Double? = 5.5
+//var number: Int? = 7
+//var hello: String? = "안녕하세요"
+//var name: String? = "홍길동"
+//var newNum: Double? = 5.5
+//
+//print(number)
+//print(hello)
+//print(name)
+//print(newNum)
+//
+//if let n = number {
+//    print(n)
+//}
+//
+//if let hi = hello {
+//    print(hi)
+//}
+//
+//if let num = name {
+//    print(num)
+//}
+//
+//if let nenm = newNum {
+//    print(nenm)
+//}
+//
+//func numberCheck() {
+//    guard let n = number else {return}
+//    print(n)
+//}
+//numberCheck()
+//
+//func helloCheck() {
+//    guard let hi = hello else {return}
+//    print(hi)
+//}
+//helloCheck()
+//
+//func nameCheck() {
+//    guard let name = name else {return}
+//    print(name)
+//}
+//nameCheck()
+//
+//func newnumCheck() {
+//    guard let newNum = newNum else {return}
+//    print(newNum)
+//}
+//newnumCheck()
 
-print(number)
-print(hello)
-print(name)
-print(newNum)
+//let myLottoNumbers: Set<Int> = [1, 2, 3, 4, 5, 6]
+//
+//func makeLottoNumbers() -> Set<Int> {
+//    var lottoNumbers = Set<Int>()
+//    while lottoNumbers.count < 6 {
+//        lottoNumbers.insert(Int.random(in: 1...45))
+//    }
+//    return lottoNumbers
+//}
+//makeLottoNumbers()
+//
+//func checkOverlap(lottoNumbers: Set<Int>) {
+//    let overlapNumbers = myLottoNumbers.intersection(lottoNumbers)
+//    if overlapNumbers.isEmpty {
+//        print("아쉽지만 겹치는 번호가 없습니다")
+//    } else {
+//        let printedOverlapNumbers = overlapNumbers.map { String($0) }.joined(separator: ", ")
+//        print("축하합니다! 겹치는 번호는 \(printedOverlapNumbers) 입니다!")
+//    }
+//}
+//checkOverlap(lottoNumbers: makeLottoNumbers())
 
-if let n = number {
-    print(n)
+let myLottoNumbers: Set<Int> = [1, 2, 3, 4, 5, 6]
+var historyLotto = [String: Set<Int>]()
+
+func makeLottoNumbers() -> Set<Int> {
+    var lottoNumbers = Set<Int>()
+    
+    while lottoNumbers.count < 6 {
+        lottoNumbers.insert(Int.random(in: 1...45))
+    }
+    
+    var round = historyLotto.count
+    round += 1
+    historyLotto["\(round)회차"] = lottoNumbers
+    
+    return lottoNumbers
 }
 
-if let hi = hello {
-    print(hi)
+func checkOverlap(lottoNumbers: Set<Int>) {
+    let overlapNumbers = myLottoNumbers.intersection(lottoNumbers)
+    if overlapNumbers.isEmpty {
+        print("아쉽지만 겹치는 번호가 없습니다")
+    } else {
+        let printedOverlapNumbers = overlapNumbers.map { String($0) }.joined(separator: ", ")
+        print("축하합니다! 겹치는 번호는 \(printedOverlapNumbers) 입니다!")
+    }
 }
 
-if let num = name {
-    print(num)
+func checkResultLotto(round: Int) {
+    if let lottoData = historyLotto["\(round)회차"] {
+        let printLottoData = lottoData.map { String($0) }.joined(separator: ", ")
+        print("\(round)회차의 당첨 번호는 \(printLottoData)입니다")
+    } else {
+        print("No Data")
+    }
+    
 }
 
-if let nenm = newNum {
-    print(nenm)
-}
-
-func numberCheck() {
-    guard let n = number else {return}
-    print(n)
-}
-numberCheck()
-
-func helloCheck() {
-    guard let hi = hello else {return}
-    print(hi)
-}
-helloCheck()
-
-func nameCheck() {
-    guard let name = name else {return}
-    print(name)
-}
-nameCheck()
-
-func newnumCheck() {
-    guard let newNum = newNum else {return}
-    print(newNum)
-}
-newnumCheck()
+makeLottoNumbers()
+makeLottoNumbers()
+makeLottoNumbers()
+makeLottoNumbers()
+makeLottoNumbers()
+print(historyLotto)
+checkResultLotto(round: 2)
