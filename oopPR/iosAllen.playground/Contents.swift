@@ -300,37 +300,45 @@ import Darwin
 //    print("대딩")
 //}
 
-let a: Int? = 7
-print(a)
+//let a: Int? = 7
+//print(a)
+//
+//switch a {
+//case .some(let z):
+//    print(z)
+//case .none:
+//    break
+//}
+//
+//switch a {
+//case let x?:
+//    print(x)
+//case .none:
+//    break
+//}
+//
+//if case .some(let z) = a {
+//    print(z)
+//}
+//
+//if case let x? = a {
+//    print(x)
+//}
+//
+//let c: [Int?] = [nil, 2, 3, nil, 5]
+//
+//for case .some(let z) in c {
+//    print(z)
+//}
+//
+//for case let x? in c {
+//    print(x)
+//}
 
-switch a {
-case .some(let z):
-    print(z)
-case .none:
-    break
+func addTwoNumbers(_ a: Int, _ b: Int) -> Int {
+    let c = a + b
+    return c
 }
 
-switch a {
-case let x?:
-    print(x)
-case .none:
-    break
-}
-
-if case .some(let z) = a {
-    print(z)
-}
-
-if case let x? = a {
-    print(x)
-}
-
-let c: [Int?] = [nil, 2, 3, nil, 5]
-
-for case .some(let z) in c {
-    print(z)
-}
-
-for case let x? in c {
-    print(x)
-}
+var x = addTwoNumbers(3, 5)
+var z = addTwoNumbers(4, 6)
