@@ -335,10 +335,83 @@ import Darwin
 //    print(x)
 //}
 
-func addTwoNumbers(_ a: Int, _ b: Int) -> Int {
-    let c = a + b
-    return c
+//func addTwoNumbers(_ a: Int, _ b: Int) -> Int {
+//    let c = a + b
+//    return c
+//}
+//
+//var x = addTwoNumbers(3, 5)
+//var z = addTwoNumbers(4, 6)
+
+enum Coffee {
+    case americano
+    case latte
+    case cappuccino
+    
+    var price: Int {
+        switch self {
+        case .americano:
+           return 4500
+        case .latte:
+           return 5000
+        case .cappuccino:
+           return 5000
+        }
+    }
 }
 
-var x = addTwoNumbers(3, 5)
-var z = addTwoNumbers(4, 6)
+
+
+
+class Person {
+    var name: String
+    var money: Int
+    
+    init(name: String, money: Int) {
+        self.name = name
+        self.money = money
+    }
+    
+    func buy(price: Int) {
+        self.money -= price
+    }
+    
+}
+
+struct CoffeeShop {
+    var name: String
+    var totalRevenu: Int
+    var menu: [Coffee: Int] = [.americano: 4500, .latte: 5000, .cappuccino: 5000]
+    var barista: Person
+    var pickUpTable: String? {
+        didSet {
+            if let pickUpTable = pickUpTable {
+                print("주문하신 \(pickUpTable) 나왔습니다. 픽업대에서 가져가주세요")
+            }
+        }
+    }
+    
+    mutating func order(coffee: Coffee, person: Person) {
+        print("\(coffee)주세요")
+        if person.money > coffee.price {
+            person.buy(price: coffee.price)
+            totalRevenu += coffee.price
+        } else {
+            print("잔액이 \(coffee.price - person.money)원 만큼 부족합니다.")
+        }
+        print("네 \(coffee)주문 받았습니다.")
+        takeOutCoffee(coffee: coffee)
+    }
+    
+    mutating func takeOutCoffee(coffee: Coffee) {
+        pickUpTable = String("\(coffee)")
+    }
+}
+
+var person1 = Person(name: "Miss Kim", money: 10000)
+var person2 = Person(name: "Mister Lee", money: 10000)
+var coffeeShop1 = CoffeeShop(name: "Starbucks", totalRevenu: 1000000, barista: person2)
+
+coffeeShop1.order(coffee: .americano, person: person1)
+print(person1.money)
+print(coffeeShop1.totalRevenu)
