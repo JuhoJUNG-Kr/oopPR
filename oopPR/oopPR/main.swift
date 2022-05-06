@@ -49,3 +49,32 @@ user1.stateMessage = "아버지를 아버지라 부르지 못하고...ㅅㅂ"
 user1.age
 
 
+class User {
+    var name: String
+    var level, hp, mp: Int
+    
+    init(name: String, level: Int, hp: Int, mp: Int) { //지정생성자 - 모든 저장속성
+        self.name = name
+        self.level = level
+        self.hp = hp
+        self.mp = mp
+    }
+    
+    convenience init(name: String) { // 편의생성자
+        self.init(name: name, level: 1, hp: 100, mp: 50)
+    }
+}
+
+class Pladin: User {
+    var akt: Int
+    
+    init(name: String, level: Int, hp: Int, mp: Int, atk: Int) {
+        self.akt = atk
+        super.init(name: name, level: level, hp: hp, mp: mp)
+    }
+    
+    convenience init() {
+        self.init(akt: 15)
+    }
+    
+}
