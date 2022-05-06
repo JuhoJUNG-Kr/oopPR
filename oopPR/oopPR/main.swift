@@ -66,15 +66,11 @@ class User {
 }
 
 class Pladin: User {
-    var akt: Int
-    
-    init(name: String, level: Int, hp: Int, mp: Int, atk: Int) {
-        self.akt = atk
-        super.init(name: name, level: level, hp: hp, mp: mp)
-    }
-    
-    convenience init() {
-        self.init(akt: 15)
-    }
-    
+    var akt: Int = 15
+    //모든 저장속성에 기본 값이 설정 되어있기 때문에, 지정 생성자 모두 자동 상속됨
+    //따라서 편의상속자도 모두 자동 상속됨!
+
 }
+
+var User3 = Pladin.init(name: "남자 성기 삽니다")
+print(User3.akt)
