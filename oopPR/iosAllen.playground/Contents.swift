@@ -414,15 +414,39 @@ import Darwin
 //print(person1.money)
 //print(coffeeShop1.totalRevenu)
 
-class Car {
-    let company: String
-    //실패가능 생성자
-    init?(company: String) {
-        if company.isEmpty {
-            return nil
-        }
-        self.company = company
+//class Car {
+//    let company: String
+//    //실패가능 생성자
+//    init?(company: String) {
+//        if company.isEmpty {
+//            return nil
+//        }
+//        self.company = company
+//    }
+//}
+//
+//let car1 = Car(company: "")
+
+
+class sometype {
+    var level = 100
+    func doSomething() {
+        print("ddd")
     }
 }
 
-let car1 = Car(company: "")
+extension sometype {
+    func doSomething2() {
+        print("ddasaw")
+    }
+}
+var a = sometype()
+a.doSomething2()
+
+extension Int {
+    var squared: Int {
+        return self * self
+    }
+}
+
+5.squared
