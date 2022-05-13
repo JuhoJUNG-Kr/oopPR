@@ -46,3 +46,6 @@ class Movie {
 }
 
 var movie1 = Movie(n: "달콤한 인생", j: "느와르", a: "이병헌", d: "김지운", day: 12)
+
+
+
